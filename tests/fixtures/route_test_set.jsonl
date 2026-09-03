@@ -1,0 +1,54 @@
+{"text": "酮洛芬的适应症是什么", "expected_path": "question", "product": "酮洛芬"}
+{"text": "代温灸膏怎么用", "expected_path": "question", "product": "代温灸膏"}
+{"text": "酮洛芬的禁忌", "expected_path": "question", "product": "酮洛芬"}
+{"text": "代温灸膏的成分", "expected_path": "question", "product": "代温灸膏"}
+{"text": "酮洛芬凝胶贴膏的不良反应", "expected_path": "question", "product": "酮洛芬"}
+{"text": "代温灸膏能用多久", "expected_path": "question", "product": "代温灸膏"}
+{"text": "酮洛芬的规格是多少", "expected_path": "question", "product": "酮洛芬"}
+{"text": "代温灸膏的贴敷位置", "expected_path": "question", "product": "代温灸膏"}
+{"text": "酮洛芬和布洛芬有什么区别", "expected_path": "question", "product": "酮洛芬"}
+{"text": "代温灸膏适合什么人用", "expected_path": "question", "product": "代温灸膏"}
+{"text": "酮洛芬是处方药吗", "expected_path": "question", "product": "酮洛芬"}
+{"text": "代温灸膏的卖点是什么", "expected_path": "question", "product": "代温灸膏"}
+{"text": "酮洛芬凝胶贴膏的用法用量", "expected_path": "question", "product": "酮洛芬"}
+{"text": "代温灸膏多少钱一盒", "expected_path": "question", "product": "代温灸膏"}
+{"text": "酮洛芬能贴腰吗", "expected_path": "question", "product": "酮洛芬"}
+{"text": "代温灸膏对关节炎有效吗", "expected_path": "question", "product": "代温灸膏"}
+{"text": "酮洛芬的禁忌人群", "expected_path": "question", "product": "酮洛芬"}
+{"text": "代温灸膏的作用机理", "expected_path": "question", "product": "代温灸膏"}
+{"text": "酮洛芬的医保情况", "expected_path": "question", "product": "酮洛芬"}
+{"text": "代温灸膏的主要成分", "expected_path": "question", "product": "代温灸膏"}
+{"text": "发代温灸膏的说明书", "expected_path": "file", "product": "代温灸膏", "asset_type": "instructions"}
+{"text": "酮洛芬的PPT", "expected_path": "file", "product": "酮洛芬", "asset_type": "promotional_presentation"}
+{"text": "代温灸膏的彩页", "expected_path": "file", "product": "代温灸膏", "asset_type": "promotional_leaflet"}
+{"text": "酮洛芬的海报", "expected_path": "file", "product": "酮洛芬", "asset_type": "poster"}
+{"text": "代温灸膏的PDR", "expected_path": "file", "product": "代温灸膏", "asset_type": "pdr"}
+{"text": "酮洛芬的展架", "expected_path": "file", "product": "酮洛芬", "asset_type": "display_stand"}
+{"text": "代温灸膏的产品图片", "expected_path": "file", "product": "代温灸膏", "asset_type": "product_image"}
+{"text": "酮洛芬的宣传图片", "expected_path": "file", "product": "酮洛芬", "asset_type": "promotional_image"}
+{"text": "代温灸膏的产品介绍", "expected_path": "file", "product": "代温灸膏", "asset_type": "product_introduction"}
+{"text": "酮洛芬的核心卖点", "expected_path": "file", "product": "酮洛芬", "asset_type": "core_selling_point"}
+{"text": "你好", "expected_path": "other", "intent": "greeting"}
+{"text": "早上好", "expected_path": "other", "intent": "greeting"}
+{"text": "谢谢", "expected_path": "other", "intent": "greeting"}
+{"text": "你能做什么", "expected_path": "other", "intent": "capability"}
+{"text": "你是谁", "expected_path": "other", "intent": "capability"}
+{"text": "你是什么模型", "expected_path": "other", "intent": "reject", "reason": "system_info"}
+{"text": "你的参数是多少", "expected_path": "other", "intent": "reject", "reason": "system_info"}
+{"text": "我爸爸腰疼，能贴酮洛芬吗", "expected_path": "other", "intent": "reject", "reason": "individual_treatment"}
+{"text": "扶他林的说明书发一下", "expected_path": "other", "intent": "reject", "reason": "competitor"}
+{"text": "洛索洛芬凝胶怎么用", "expected_path": "other", "intent": "reject", "reason": "competitor"}
+{"text": "今天天气怎么样", "expected_path": "other", "intent": "reject", "reason": "out_of_scope"}
+{"text": "帮我写一首诗", "expected_path": "other", "intent": "reject", "reason": "out_of_scope"}
+{"text": "我要投诉", "expected_path": "other", "intent": "reject", "reason": "out_of_scope"}
+{"text": "你们公司地址在哪", "expected_path": "other", "intent": "clarify"}
+{"text": "那个产品怎么用", "expected_path": "other", "intent": "clarify"}
+{"text": "资料", "expected_path": "other", "intent": "clarify"}
+{"text": "酮洛芬或者代温灸膏的说明书", "expected_path": "file", "intent": "clarify_multi"}
+{"text": "酮洛芬是国产的还是进口的", "expected_path": "question", "product": "酮洛芬"}
+{"text": "代温灸膏是中药吗", "expected_path": "question", "product": "代温灸膏"}
+{"text": "酮洛芬贴多久换一次", "expected_path": "question", "product": "酮洛芬"}
+{"text": "代温灸膏可以贴肚脐吗", "expected_path": "question", "product": "代温灸膏"}
+{"text": "酮洛芬和扶他林哪个好", "expected_path": "other", "intent": "reject", "reason": "competitor"}
+{"text": "你们的产品卖多少钱", "expected_path": "question"}
+{"text": "代温灸膏的经济优势", "expected_path": "question", "product": "代温灸膏"}
