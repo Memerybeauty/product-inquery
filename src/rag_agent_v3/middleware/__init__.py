@@ -12,12 +12,14 @@ from rag_agent_v3.middleware.disclaimer import (
     append_internet_disclaimer,
     INTERNET_DISCLAIMER,
 )
+from rag_agent_v3.middleware.short_circuit import short_circuit_tool_result
 
 # 装饰器包装后的中间件用 __wrapped__ 拿原函数名
 _MIDDLEWARE_NAMES = {
     "force_direct_qa_bypass": "QA 直返通道",
     "validate_text_response": "文本合规验证",
     "append_internet_disclaimer": "联网免责声明",
+    "short_circuit_tool_result": "短路 tool → final answer",
 }
 
 
@@ -26,10 +28,11 @@ def get_compliance_middleware_list() -> list:
 
     顺序很关键：
     - 工具调用层先执行（force_direct_qa_bypass）
-    - 模型输出层后执行（validate_text_response + append_internet_disclaimer）
+    - 模型输出层后执行（validate_text_response + append_internet_disclaimer + short_circuit）
     """
     return [
         force_direct_qa_bypass,
+        short_circuit_tool_result,
         validate_text_response,
         append_internet_disclaimer,
     ]
@@ -48,6 +51,7 @@ __all__ = [
     "ALLOWED_PRODUCTS",
     "append_internet_disclaimer",
     "INTERNET_DISCLAIMER",
+    "short_circuit_tool_result",
     "get_compliance_middleware_list",
     "get_middleware_names",
 ]

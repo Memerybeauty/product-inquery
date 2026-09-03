@@ -36,8 +36,10 @@
 {"text": "你是什么模型", "expected_path": "other", "intent": "reject", "reason": "system_info"}
 {"text": "你的参数是多少", "expected_path": "other", "intent": "reject", "reason": "system_info"}
 {"text": "我爸爸腰疼，能贴酮洛芬吗", "expected_path": "other", "intent": "reject", "reason": "individual_treatment"}
-{"text": "扶他林的说明书发一下", "expected_path": "other", "intent": "reject", "reason": "competitor"}
-{"text": "洛索洛芬凝胶怎么用", "expected_path": "other", "intent": "reject", "reason": "competitor"}
+{"text": "扶他林的说明书发一下", "expected_path": "question", "product": "扶他林", "note": "竞品走查问题"}
+{"text": "洛索有什么作用", "expected_path": "question", "product": "洛索洛芬", "note": "竞品走查问题"}
+{"text": "洛索洛芬凝胶怎么用", "expected_path": "question", "product": "洛索洛芬", "note": "竞品走查问题"}
+{"text": "布洛芬怎么样", "expected_path": "question", "product": "布洛芬", "note": "竞品走查问题"}
 {"text": "今天天气怎么样", "expected_path": "other", "intent": "reject", "reason": "out_of_scope"}
 {"text": "帮我写一首诗", "expected_path": "other", "intent": "reject", "reason": "out_of_scope"}
 {"text": "我要投诉", "expected_path": "other", "intent": "reject", "reason": "out_of_scope"}
@@ -49,6 +51,6 @@
 {"text": "代温灸膏是中药吗", "expected_path": "question", "product": "代温灸膏"}
 {"text": "酮洛芬贴多久换一次", "expected_path": "question", "product": "酮洛芬"}
 {"text": "代温灸膏可以贴肚脐吗", "expected_path": "question", "product": "代温灸膏"}
-{"text": "酮洛芬和扶他林哪个好", "expected_path": "other", "intent": "reject", "reason": "competitor"}
+{"text": "酮洛芬和扶他林哪个好", "expected_path": "question", "product": "酮洛芬/扶他林", "note": "对比问题走查问题"}
 {"text": "你们的产品卖多少钱", "expected_path": "question"}
 {"text": "代温灸膏的经济优势", "expected_path": "question", "product": "代温灸膏"}

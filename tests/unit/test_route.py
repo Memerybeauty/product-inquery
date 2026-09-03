@@ -70,10 +70,26 @@ def test_other_path_minimum(cases):
 
 
 def test_reject_cases_have_reason(cases):
-    """reject 类型的 case 必须带 reason"""
+    """reject 类型的 case 必须带 reason（v3：3 类，无 competitor）"""
     for c in cases:
         if c["expected_path"] == "other" and c.get("intent") == "reject":
             assert "reason" in c
             assert c["reason"] in (
-                "individual_treatment", "competitor", "system_info", "out_of_scope",
-            )
+                "individual_treatment", "system_info", "out_of_scope",
+            ), f"v3 越界只 3 类，发现非法 reason: {c.get('reason')}"
+
+
+def test_no_competitor_reject(cases):
+    """v3 设计：竞品不是越界条件，不应出现 competitor reason"""
+    for c in cases:
+        if c.get("reason") == "competitor":
+            pytest.fail(f"v3 不允许 competitor reason: {c}")
+
+
+def test_competitor_questions_go_to_question(cases):
+    """竞品问题应走 question 路径"""
+    for c in cases:
+        text = c.get("text", "")
+        if any(kw in text for kw in ["扶他林", "洛索", "布洛芬"]):
+            assert c["expected_path"] in ("question", "file"), \
+                f"竞品 '{text}' 应走 question/file，不应走 {c['expected_path']}"

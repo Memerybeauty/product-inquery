@@ -40,10 +40,17 @@ class TestTextCompliance:
         assert ok is False
         assert "boundary_keyword" in reason
 
-    def test_competitor_keyword(self):
+    def test_competitor_not_boundary(self):
+        """v3 设计：竞品/外部产品不是越界条件，应通过合规检查"""
         ok, reason = _is_valid("扶他林的副作用")
-        assert ok is False
-        assert "boundary_keyword" in reason
+        assert ok is True
+        assert reason == "ok"
+
+    def test_external_drug_not_boundary(self):
+        """v3 设计：任何产品名（含竞品）都不是越界关键词"""
+        ok, reason = _is_valid("洛索洛芬凝胶的副作用")
+        assert ok is True
+        assert reason == "ok"
 
     def test_strip_source_block(self):
         text = "酮洛芬适用于缓解疼痛。\n\n资料依据：XXX 文件 2024-01-01"

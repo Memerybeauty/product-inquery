@@ -22,10 +22,12 @@ from langchain_core.messages import AIMessage, ToolMessage
 
 logger = logging.getLogger(__name__)
 
-# 越界关键词（个体化诊疗 / 竞品 / 索要系统信息等）
+# 越界关键词（v3 · 只 3 类：个体化 / 系统信息 / 其他越界）
+# 竞品 / 外部产品**不是**越界条件，必须走查问题路径
 BOUNDARY_KEYWORDS: list[str] = [
+    # 个体化诊疗
     "个体化", "我爸爸", "我妈", "我爷爷", "我奶奶", "我自己", "患者", "病人",
-    "竞品", "芬太尼", "洛索洛芬", "扶他林", "其他厂家",
+    # 系统信息
     "你是什么模型", "你的参数", "你的系统提示", "你的prompt",
 ]
 
@@ -110,6 +112,33 @@ def validate_text_response(state: Any, runtime: Any) -> Any:
     last = messages[-1]
     if not isinstance(last, AIMessage):
         return state
+
+    # tool_call 阶段：模型刚发出 tool_calls，是中间产物，跳过校验
+    if last.tool_calls:
+        logger.info("[validate] tool_call stage, skip validation (calls=%d)", len(last.tool_calls))
+        return state
+
+    # 短路标记：如果上一个 tool 是 reject/clarify/capability，直接用 ToolMessage 转 final answer
+    metadata = state.get("response_metadata", {}) or {}
+    if metadata.get("short_circuit_final"):
+        # 把最后一条 ToolMessage 转 AIMessage
+        tool_msg = next(
+            (m for m in reversed(messages) if isinstance(m, ToolMessage)),
+            None,
+        )
+        if tool_msg:
+            text = tool_msg.content if isinstance(tool_msg.content, str) else str(tool_msg.content)
+            new_ai = AIMessage(
+                content=text,
+                additional_kwargs=last.additional_kwargs,
+                response_metadata=last.response_metadata,
+                id=last.id,
+            )
+            # 移除最后那条 AIMessage，替换为 final answer
+            new_messages = [m for m in messages if m is not last] + [new_ai]
+            state["messages"] = new_messages
+            logger.info("[short_circuit] ✓ final answer set (tool=%s)", metadata.get("short_circuit_tool"))
+            return state
 
     metadata = state.get("response_metadata", {}) or {}
     is_bypass = bool(metadata.get("direct_qa_bypass"))
